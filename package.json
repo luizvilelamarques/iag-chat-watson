@@ -19,7 +19,8 @@
     "vue-resource": "^1.4.0",
     "vue-router": "^3.0.1",
     "vue-slimscroll": "^1.0.1",
-    "vuetify": "^1.0.0"
+    "vuetify": "^1.0.0",
+    "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
