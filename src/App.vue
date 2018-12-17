@@ -86,10 +86,6 @@ html {
   background: #A4A4A4; 
 }
 
-.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
-  background-color:white;
-  margin-top:0;
-  margin-bottom:0;
-  border-radius: 1% 1% 1% 1%;
-}
+
+
 </style>

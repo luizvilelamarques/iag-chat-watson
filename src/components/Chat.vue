@@ -80,7 +80,7 @@
 	created: function() {
         this.$watch("iteracoes", function(res) {
 			let self = this;
-			setTimeout(function(){ self.atualizaScroll(); }, 1000);
+			setTimeout(function(){ self.atualizaScroll(); }, 500);
         })
     },
 	 methods: {
@@ -122,23 +122,21 @@
 <style scoped>
 
 .botao-voltar{
-	border:2px solid #e0642f;
-	left:0;
-    right:0;
-	position: absolute;
-    top: 0px;
-	margin-left:5%;
-	margin-right:5% !important;
-	padding-bottom: 10px;
-	font-weight: bold;
-    font-size:16px;
-    color: #e0642f;
-	height:50px;
+  border:2px solid #e0642f;
+  height:50px;
+  width: 90%;
+  font-weight: bold;
+  font-size:16px;
+  color: #e0642f;
+  margin-left:5%;
+  margin-right:5%;
+  font-family: 'Roboto';
+  padding-bottom: 10px;
 }
 
 #chat{
 	margin: 0% 5% 0% 5%; 
-	margin-top:55px;
+	margin-top:10px;
 	overflow:auto; 
 	min-height:400px;
 }
@@ -156,13 +154,6 @@
 
 .iteracaoUsuario{
   font-family: 'Roboto';
-}
-
-.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
-  background-color:white;
-  margin-top:0;
-  margin-bottom:0;
-  border-radius: 1% 1% 1% 1%;
 }
 
 .conversation-list{
@@ -183,6 +174,13 @@ p{
 
 .v-card__title {
   padding:10px;
+}
+
+.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+  background-color:white;
+  margin-top:0;
+  margin-bottom:0;
+  border-radius: 1% 1% 1% 1%;
 }
 
 </style>

@@ -4,8 +4,7 @@
   "description": "A Vue.js project",
   "author": "Luiz Augusto Vilela Marques <luizvilelamarques@gmail.com>",
   "private": true,
-  "scripts": 
-    "heroku-prebuild": "npm install --dev",
+  "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js"
