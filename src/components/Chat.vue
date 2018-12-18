@@ -1,20 +1,22 @@
 <template>
-	<div class="maindiv">
-		<v-btn class="botao-voltar" to="/"><p style="margin-top:5px;">VOLTAR PARA O MENU</p></v-btn>
+	<div style="height:100%">
+		<v-flex xs12 style="border-bottom: 2px solid #e0642f; padding-bottom:10px;padding-top:10px;">
+		<v-btn class="botao-voltar rounded-card" to="/"><p style="margin-top:5px;">VOLTAR PARA O MENU</p></v-btn>
+		</v-flex xs12>
 		<div id="chat">
 			<ul class="conversation-list" id="painelChat">	
 			<li v-for="(iteracaoChat, index) in iteracoes" :key="`iteracao${index}`" style="padding-bottom:5px;">
 				
 				<v-flex xs12 style="width:50%;margin-left:50%;padding-bottom:3px;">
-					<v-card color="#E8E8E8" class="black--text" >
+					<v-card round  color="#E8E8E8" class="black--text rounded-card" >
 					  <v-card-title primary-title class="layout top-left iteracaoUsuario">
 						<nl2br tag="p" :text="iteracaoChat.iteracao"/>
 						</v-card-title>
 					</v-card>
 				</v-flex xs12>	
 					
-				<v-flex xs12 style="padding-bottom:3px;" v-for="(item, index) in iteracaoChat.respostas" :key="`item${index}`">
-					<v-card color="#e0642f" class="white--text" >
+				<v-flex xs12 style="padding-bottom:3px;width:75%;" v-for="(item, index) in iteracaoChat.respostas" :key="`item${index}`">
+					<v-card color="#e0642f" class="white--text rounded-card" >
 					  <v-card-title primary-title class="layout top-left">
 						<nl2br tag="p" :text="item" style="margin-bottom:0px;margin-top:0px;"/>
 						</v-card-title>
@@ -22,12 +24,12 @@
 				</v-flex xs12>	
 				
 				<v-flex xs12 v-for="(pergunta, index) in iteracaoChat.perguntas" :key="`pergunta${index}`">
-					<v-card color="#e0642f" class="white--text" style="width:200px;" v-if="pergunta.length<50">
+					<v-card color="#e0642f" class="white--text rounded-card" style="width:200px;" v-if="pergunta.length<50">
 					  <v-card-title primary-title class="layout top-left cardChat" v-html>
 							<nl2br tag="p" :text="pergunta" style="margin-bottom:0px;margin-top:0px;"/>
 						</v-card-title>
 					</v-card>
-					<v-card color="#e0642f" class="white--text" style="border-radius: 1% 1% 1% 1%" v-if="pergunta.length>50">
+					<v-card round  color="#e0642f" class="white--text rounded-card" style="width:75%;" v-if="pergunta.length>50">
 					  <v-card-title primary-title class="layout top-left cardChat" v-html>
 						<nl2br tag="p" :text="pergunta" style="margin-bottom:0px;margin-top:0px;!important"/>
 					  </v-card-title>
@@ -35,13 +37,13 @@
 				</v-flex xs12>
 				
 				<v-flex xs12 v-for="(opc, index) in iteracaoChat.opcoes" :key="`opcao${index}`" style="padding-top:5px;">
-				  <v-btn  class="opcao" v-on:click="iteracao(opc, context)">{{opc}}</v-btn>
+				  <v-btn  class="opcao rounded-card" v-on:click="iteracao(opc, context)">{{opc}}</v-btn>
 				</v-flex xs12>
 			</li>
 			</ul>
 		</div>
 		<label for="textInput" class="inputOutline">
-		  <input id="textInput" size="105" v-on:keyup.enter="perguntaUsuario" v-model="parametro" class="input" autofocus placeholder="Digite sua resposta..." type="text">
+		  <input id="textInput" size="105" v-on:keyup.enter="perguntaUsuario" v-model="parametro" class="input" autofocus placeholder="Digite sua mensagem..." type="text">
 		</label>
 	</div>
 </template>
@@ -73,7 +75,7 @@
       this.parametro = this.$route.params.assunto;
 	  this.iteracao(this.parametro, this.context);
 	  $('#chat .conversation-list').slimscroll({
-		height: '400px',
+		height: '65vh',
 		start: 'bottom',
       });
 	},
@@ -132,24 +134,27 @@
   margin-right:5%;
   font-family: 'Roboto';
   padding-bottom: 10px;
+  
 }
 
 #chat{
 	margin: 0% 5% 0% 5%; 
 	margin-top:10px;
 	overflow:auto; 
-	min-height:400px;
+	max-height: 65vh;
+	min-height: 65vh;
 }
 
 .opcao{
   border:2px solid #e0642f;
   height:40px;
-  width: 100%;
+  width: 75%;
   font-weight: bold;
-  font-size:14px;
+  font-size:12px;
   color: #e0642f;
   margin-left:0;
   font-family: 'Roboto';
+  font-color: #e0642f;
 }
 
 .iteracaoUsuario{
@@ -159,7 +164,7 @@
 .conversation-list{
   list-style-type:none;
   padding-left:0;
-  min-height:400px;
+  min-height:90%;
 }
 
 .conversation-list li {

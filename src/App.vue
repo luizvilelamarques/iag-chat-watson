@@ -39,13 +39,14 @@ html {
 	background-color: #fff;
     padding: 0.9375rem 0 0.625rem 0;
     text-align: left;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 10%;
+	margin-right: 10%;
 	margin-bottom: 3%;
 	margin-top: 3%;
 	border-radius: 1% 1% 1% 1%;
 	box-shadow: 3px 3px 19px 0px rgba(0,0,0,0.65);
-	height: 100%;
+	max-height: 90vh;
+	min-height: 90vh;
 }
 
 #textInput {
@@ -86,6 +87,8 @@ html {
   background: #A4A4A4; 
 }
 
-
+.rounded-card{
+    border-radius:8px !important;
+}
 
 </style>
