@@ -1,45 +1,49 @@
 <template>
 	<div style="height:100%">
-		<v-flex xs12 style="border-bottom: 2px solid #e0642f; padding-bottom:10px;padding-top:10px;">
-		<v-btn class="botao-voltar rounded-card" to="/"><p style="margin-top:5px;">VOLTAR PARA O MENU</p></v-btn>
+		<v-flex class="cabecalho-chat" xs12>
+		  <v-btn class="botao-voltar rounded-card" to="/"><p style="margin-top:5px;">VOLTAR PARA O MENU</p></v-btn>
 		</v-flex xs12>
 		<div id="chat">
 			<ul class="conversation-list" id="painelChat">	
 			<li v-for="(iteracaoChat, index) in iteracoes" :key="`iteracao${index}`" style="padding-bottom:5px;">
+				<v-container fluid grid-list-md text-xs-left>
+					<v-layout row wrap>
+
+            <v-flex xs12 class="text-xs-right">
+              <div class="rounded-card tamanho-card v-card gray--text usuario">
+                {{iteracaoChat.iteracao}}
+                </div>
+            </v-flex>
+
+            <v-flex xs12 style="padding-bottom:3px;max-width:75%;" v-for="(item, index) in iteracaoChat.respostas" :key="`item${index}`">
+              <v-layout row>
+                  <img src="static/robot.jpg" class="img-robo" width="40" height="40"/>
+                  <div class="rounded-card tamanho-card v-card white--text pergunta" >
+                    <nl2br tag="p" :text="item.resposta"/>
+                  </div>
+              </v-layout>
+            </v-flex>
+            <v-flex xs12 v-if="iteracaoChat.showImg" style="max-width:75%;">
+              <div class="rounded-card tamanho-card v-card white--text pergunta" style="line-height: 0;">
+                <img  src="static/iphone-text-dots-gif-3.gif" class="img-load"/>
+              </div>
+            </v-flex>
+
+            <v-flex xs12 v-if="!iteracaoChat.showImg" style="max-width:75%;" v-for="(pergunta, index) in iteracaoChat.perguntas" :key="`pergunta${index}`">
+						   <div class="rounded-card tamanho-card v-card white--text pergunta">
+							  <nl2br tag="p" :text="pergunta"/>
+						   </div>
+						</v-flex>
 				
-				<v-flex xs12 style="width:50%;margin-left:50%;padding-bottom:3px;">
-					<v-card round  color="#E8E8E8" class="black--text rounded-card" >
-					  <v-card-title primary-title class="layout top-left iteracaoUsuario">
-						<nl2br tag="p" :text="iteracaoChat.iteracao"/>
-						</v-card-title>
-					</v-card>
-				</v-flex xs12>	
-					
-				<v-flex xs12 style="padding-bottom:3px;width:75%;" v-for="(item, index) in iteracaoChat.respostas" :key="`item${index}`">
-					<v-card color="#e0642f" class="white--text rounded-card" >
-					  <v-card-title primary-title class="layout top-left">
-						<nl2br tag="p" :text="item" style="margin-bottom:0px;margin-top:0px;"/>
-						</v-card-title>
-					</v-card>
-				</v-flex xs12>	
-				
-				<v-flex xs12 v-for="(pergunta, index) in iteracaoChat.perguntas" :key="`pergunta${index}`">
-					<v-card color="#e0642f" class="white--text rounded-card" style="width:200px;" v-if="pergunta.length<50">
-					  <v-card-title primary-title class="layout top-left cardChat" v-html>
-							<nl2br tag="p" :text="pergunta" style="margin-bottom:0px;margin-top:0px;"/>
-						</v-card-title>
-					</v-card>
-					<v-card round  color="#e0642f" class="white--text rounded-card" style="width:75%;" v-if="pergunta.length>50">
-					  <v-card-title primary-title class="layout top-left cardChat" v-html>
-						<nl2br tag="p" :text="pergunta" style="margin-bottom:0px;margin-top:0px;!important"/>
-					  </v-card-title>
-					</v-card>
-				</v-flex xs12>
-				
-				<v-flex xs12 v-for="(opc, index) in iteracaoChat.opcoes" :key="`opcao${index}`" style="padding-top:5px;">
-				  <v-btn  class="opcao rounded-card" v-on:click="iteracao(opc, context)">{{opc}}</v-btn>
-				</v-flex xs12>
+						<v-flex xs12 v-if="!iteracaoChat.showImg" style="padding:0 0;min-width:75%;" v-for="(opc, index) in iteracaoChat.opcoes" :key="`opcao${index}`">
+						  <span style="justify-content:left;">
+							  <v-btn class="opcao rounded-card text-xs-left" v-on:click="iteracao(opc.value, context)">{{opc.label}}</v-btn>
+						  </span>	 
+						</v-flex>
+					</v-layout>
+				</v-container>
 			</li>
+
 			</ul>
 		</div>
 		<label for="textInput" class="inputOutline">
@@ -56,136 +60,200 @@
  
   export default {
     name: 'my-component',
-	components: {
-		Nl2br,
-	},
+    components: {
+      Nl2br,
+    },
     data: () => ({
+	  img: '-webkit-linear-gradient(top, #1FB5AD, #1FB5AD 10%, transparent 10%, transparent 100%) !important;',
       parametro: null,
-	  text: null,
-	  context: null,
-	  iteracoes: [],
-	  itemIteracao: {
-		respostas: [],
-		perguntas: [],
-		opcoes: [],
-		iteracao:null
-	   }
+	    text: null,
+	    context: null,
+	    iteracoes: [],
+	    itemIteracao: {
+		       respostas: [],
+		       perguntas: [],
+		       opcoes: [],
+		       iteracao:null
+	    }
     }),
 	mounted () {
       this.parametro = this.$route.params.assunto;
-	  this.iteracao(this.parametro, this.context);
-	  $('#chat .conversation-list').slimscroll({
-		height: '65vh',
-		start: 'bottom',
+	    this.iteracao(this.parametro, this.context);
+	    $('#chat .conversation-list').slimscroll({
+		    height: '65vh',
+		    start: 'bottom',
       });
 	},
-	created: function() {
-        this.$watch("iteracoes", function(res) {
-			let self = this;
-			setTimeout(function(){ self.atualizaScroll(); }, 500);
-        })
-    },
-	 methods: {
+  watch: {
+      "iteracoes": function(res) {
+        let self = this;
+        setTimeout(function(){ self.atualizaScroll(); }, 500);
+      }
+  },
+  methods: {
 	   atualizaScroll (){
-		 $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000) });
+		    $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000) });
+       document.getElementById('').scrollIntoView()
 	   },
+
 	   perguntaUsuario () {
-		 this.iteracao(this.parametro, this.context);
+		  this.iteracao(this.parametro, this.context);
 	   },
+
 	   async iteracao (text, context) {
 	    this.parametro=null;
 	    this.itemIteracao = {
 			respostas: [],
 			perguntas: [],
 			opcoes: [],
-			iteracao: text
+			iteracao: text,
+        showImg: false
 	    }
-		const response = await (await this.$http.post('conversation', {text, context}).then(res => res.json()));
-		this.context = response.context; 
-		let self = this;
-		
-		response.output.generic.forEach(function(generic){
-			if (generic.response_type==='text'){
-			    self.itemIteracao.respostas.push(generic.text);
-			}else{	  
-				self.itemIteracao.perguntas.push(generic.title);
-				generic.options.forEach(function(opt){
-				  self.itemIteracao.opcoes.push(opt.label);
-				});
-			}
-		});
-		self.iteracoes.push(this.itemIteracao);
+		  const response = await (await this.$http.post('conversation', {text, context}).then(res => res.json()));
+		  this.context = response.context;
+		  let self = this;
+		  response.output.generic.forEach(function(generic){
+			  if (generic.response_type==='text'){
+			    let resposta = {resposta: generic.text};
+          self.itemIteracao.showImg = true;
+			    self.itemIteracao.respostas.push(resposta);
+			  }else{
+				  self.itemIteracao.perguntas.push(generic.title);
+				  generic.options.forEach(function(opt){
+				    let optionChat = {label: opt.label, value: opt.value.input.text};
+				    self.itemIteracao.opcoes.push(optionChat);
+				  });
+			  }
+			  if (self.itemIteracao.showImg) {
+          setTimeout(function(){self.itemIteracao.showImg = false; self.atualizaScroll();}, 2000);
+        }
+		  });
+		  self.iteracoes.push(this.itemIteracao);
 	   }
-	}
+	  }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.botao-voltar{
-  border:2px solid #e0642f;
-  height:50px;
-  width: 90%;
-  font-weight: bold;
-  font-size:16px;
-  color: #e0642f;
-  margin-left:5%;
-  margin-right:5%;
-  font-family: 'Roboto';
-  padding-bottom: 10px;
-  
-}
+  .container.grid-list-md .layout .flex {
+      padding-left: 0px;
+  }
 
-#chat{
-	margin: 0% 5% 0% 5%; 
-	margin-top:10px;
-	overflow:auto; 
-	max-height: 65vh;
-	min-height: 65vh;
-}
+  .v-btn{
+    text-transform:none;
+  }
 
-.opcao{
-  border:2px solid #e0642f;
-  height:40px;
-  width: 75%;
-  font-weight: bold;
-  font-size:12px;
-  color: #e0642f;
-  margin-left:0;
-  font-family: 'Roboto';
-  font-color: #e0642f;
-}
+  .botao-voltar{
+    border:1px solid white;
+    height:50px;
+    width: 92%;
+    font-weight: bold;
+    font-size:16px;
+    color: white;
+    margin-left:5%;
+    margin-right:3%;
+    font-family: 'Open Sans';
+  }
 
-.iteracaoUsuario{
-  font-family: 'Roboto';
-}
+  #chat{
+    margin: 0% 2% 0% 10px;
+    margin-top:0px;
+    overflow:auto;
+    max-height: 65vh;
+    min-height: 65vh;
+  }
 
-.conversation-list{
-  list-style-type:none;
-  padding-left:0;
-  min-height:90%;
-}
+  .opcao{
+    border:0.5px solid #1FB5AD;
+    height:40px;
+    width: 75%;
+    font-size:14px;
+    color: #1FB5AD;
+    margin-left:0;
+    font-family: 'Open Sans';
+    font-color: #1FB5AD;
+  }
 
-.conversation-list li {
-  list-style-type:none;
-}
+  .iteracaoUsuario{
+    font-family: 'Open Sans';
+  }
 
-p{
-  margin-bottom:0px;
-  margin-top:0px;
+  .conversation-list{
+    list-style-type:none;
+    padding-left:50;
+    min-height:90%;
+  }
 
-}
+  .conversation-list li {
+    list-style-type:none;
+  }
 
-.v-card__title {
-  padding:10px;
-}
+  p{
+    margin-bottom:0px;
+    margin-top:0px;
+  }
 
-.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
-  background-color:white;
-  margin-top:0;
-  margin-bottom:0;
-  border-radius: 1% 1% 1% 1%;
-}
+  .v-card__title {
+    padding:10px;
+  }
+
+  .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+    background-color:white;
+    margin-top:0;
+    margin-bottom:0;
+    border-radius: 1% 1% 1% 1%;
+  }
+
+  .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat).botao-voltar {
+    background-color:#1FB5AD;
+    margin-top:0;
+    margin-bottom:0;
+    border-radius: 1% 1% 1% 1%;
+  }
+
+  .cardChat{
+    max-width:75%;
+  }
+
+  .tamanho-card{
+    display: inline-block;
+    width:auto;
+    max-width:100%;
+    vertical-align: middle;
+    font-family: 'Open Sans';
+  }
+
+  .pergunta{
+    border-bottom-left-radius: 0px !important;
+    padding: 5px 15px;
+    background-color:#1FB5AD;
+  }
+
+  .usuario{
+    border-bottom-right-radius: 0px !important;
+    background-color:#E8E8E8;
+    font-family: 'Open Sans';
+    font-size:16px;
+    padding: 5px 15px;
+  }
+
+  .cabecalho-chat{
+    border-bottom: 2px solid #1FB5AD; padding-bottom:10px;padding-top:0px;
+    background: #1FB5AD;
+    margin-top: -15px;
+    padding-top: 15px;
+  }
+
+  .img-robo{
+    align-self: center; margin-right: 5px;
+    margin-left: -40px;
+  }
+
+  .img-load{
+    margin: -10px -15px;
+    width:50px;
+  }
 
 </style>

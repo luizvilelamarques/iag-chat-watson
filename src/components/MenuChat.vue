@@ -1,13 +1,22 @@
 <template>
   <div>
-		<p class="ola-menu">Olá! Escolha abaixo o módulo que deseja ajuda:</p>	
+
+
 		  <v-container fluid grid-list-md text-xs-center>
 			<v-layout row wrap>
+
+        <v-flex xs2 style="width: 170px;">
+          <img src="static/robot.jpg" width="160" height="160"/>
+        </v-flex>
+
+        <v-flex xs10>
+          <p class="ola-menu">Bem vindo ao chatbot do Sigquali.</br> Para começar, em qual módulo posso lhe ajudar?</p>
+        </v-flex>
 			  
 			  <v-flex v-for="itemMenu in items" :key="itemMenu.assunto" xs3>
-				<v-card  color="white" class="rounded-card">
-				  <v-btn class="itemMenu rounded-card" v-on:click="acessoChat(itemMenu.assunto)"><span style="margin-right:10%;margin-left:10%;white-space: normal;">{{itemMenu.text}}</span></v-btn>
-				</v-card>
+          <v-card  color="white" class="rounded-card">
+            <v-btn class="itemMenu rounded-card" v-on:click="acessoChat(itemMenu.assunto)"><span style="margin-right:10%;margin-left:10%;white-space: normal;">{{itemMenu.text}}</span></v-btn>
+          </v-card>
 			  </v-flex>
 			  
 			  <v-flex xs12>
@@ -59,11 +68,11 @@
 }
 	
 .itemMenu{
-  border:2px solid #e0642f;
+  border:2px solid #1FB5AD;
   height:90px;
   font-weight: bold;
   font-size:19px;
-  color: #e0642f;
+  color: #1FB5AD !important;
   margin-left:0;
   border-radius: 1% 1% 1% 1%;
   width:100%
@@ -74,14 +83,11 @@
 }
 
 .ola-menu{
-  font-family:Roboto;
+  font-family:Open Sans;
   font-color:#000;
   font-size:40px;
   font-weight: bold;
-  text-align:center;
-  margin-top:5%;
-  margin-left:5%;
-  margin-right:5%;
+  text-align:left;
 }
 
 .container {
@@ -94,5 +100,10 @@
   margin-top:0;
   margin-bottom:0;
   border-radius: 1% 1% 1% 1%;
+}
+
+.topo-chat {
+   background-image: linear-gradient(top, white, white 10%, transparent 10%, transparent 100%) !important;
+   background-image: -webkit-linear-gradient(top, white, white 10%, transparent 10%, transparent 100%) !important; 
 }
 </style>

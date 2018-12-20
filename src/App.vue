@@ -37,16 +37,18 @@ html {
 
 .chat-column {
 	background-color: #fff;
-    padding: 0.9375rem 0 0.625rem 0;
-    text-align: left;
+  padding: 0.9375rem 0 0.625rem 0;
+  text-align: left;
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-bottom: 3%;
 	margin-top: 3%;
-	border-radius: 1% 1% 1% 1%;
+	border-radius: 10px;
 	box-shadow: 3px 3px 19px 0px rgba(0,0,0,0.65);
 	max-height: 90vh;
 	min-height: 90vh;
+  overflow: hidden;
+
 }
 
 #textInput {
@@ -58,11 +60,12 @@ html {
     line-height: 1.3125rem;
     height: 2.5rem;
     overflow: none;
+    font-family: 'Open Sans';
 }
 
 .inputOutline {
     display: block;
-    border-bottom: 0.2625rem solid #e0642f;
+    border-bottom: 0.2625rem solid #1FB5AD;
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -91,4 +94,11 @@ html {
     border-radius:8px !important;
 }
 
+div .btn__content {
+  display:ms-flexbox !Important;
+}
+
+.opcao .v-btn__content{
+  justify-content: left;
+}
 </style>
