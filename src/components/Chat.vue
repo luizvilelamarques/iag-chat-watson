@@ -128,10 +128,14 @@
 		  const response = await (await this.$http.post('conversation', {text, context}).then(res => res.json()));
 		  this.context = response.context;
 		  let self = this;
+		  let possuiPergunta = !(response.output.generic.filter(generic => generic.options).length==0);
+		  let possuiResposta = response.output.generic.filter((generic) => {
+			return generic.response_type==='text';
+		  });
 		  response.output.generic.forEach(function(generic){
 			  if (generic.response_type==='text'){
 			    let resposta = {resposta: generic.text};
-          self.itemIteracao.showImg = true;
+          self.itemIteracao.showImg = possuiResposta && possuiPergunta;
 			    self.itemIteracao.respostas.push(resposta);
 			  }else{
 				  self.itemIteracao.perguntas.push(generic.title);
