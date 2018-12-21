@@ -9,7 +9,7 @@
 				<v-container fluid grid-list-md text-xs-left>
 					<v-layout row wrap>
 
-            <v-flex xs12 class="text-xs-right">
+            <v-flex xs12 class="text-xs-right" v-if="iteracaoChat.iteracao">
               <div class="rounded-card tamanho-card v-card gray--text usuario">
                 {{iteracaoChat.iteracao}}
                 </div>
@@ -29,10 +29,13 @@
               </div>
             </v-flex>
 
-            <v-flex xs12 v-if="!iteracaoChat.showImg" style="max-width:75%;" v-for="(pergunta, index) in iteracaoChat.perguntas" :key="`pergunta${index}`">
-						   <div class="rounded-card tamanho-card v-card white--text pergunta">
+            <v-flex xs12 v-if="!iteracaoChat.showImg" style="padding-bottom:8px;padding-top:8px; max-width:75%;" v-for="(pergunta, index) in iteracaoChat.perguntas" :key="`pergunta${index}`">
+              <v-layout row>
+              <img src="static/robot.jpg" class="img-robo" width="40" height="40"/>
+              <div class="rounded-card tamanho-card v-card white--text pergunta">
 							  <nl2br tag="p" :text="pergunta"/>
 						   </div>
+              </v-layout>
 						</v-flex>
 				
 						<v-flex xs12 v-if="!iteracaoChat.showImg" style="padding:0 0;min-width:75%;" v-for="(opc, index) in iteracaoChat.opcoes" :key="`opcao${index}`">
@@ -77,12 +80,25 @@
 	    }
     }),
 	mounted () {
-      this.parametro = this.$route.params.assunto;
-	    this.iteracao(this.parametro, this.context);
-	    $('#chat .conversation-list').slimscroll({
-		    height: '65vh',
-		    start: 'bottom',
-      });
+      let primeiraIteracao = {
+        respostas: [],
+        perguntas: [],
+        opcoes: [],
+        iteracao: this.$route.params.assunto,
+        showImg: true
+      };
+      this.iteracoes.push(primeiraIteracao);
+      let self = this;
+      setTimeout(function(){
+        self.parametro = self.$route.params.assunto;
+        self.iteracao(self.parametro, self.context);
+        $('#chat .conversation-list').slimscroll({
+          height: '65vh',
+          start: 'bottom',
+        });
+        primeiraIteracao.showImg = false;
+        primeiraIteracao.iteracao = null;
+      }, 2000);
 	},
   watch: {
       "iteracoes": function(res) {
@@ -92,7 +108,7 @@
   },
   methods: {
 	   atualizaScroll (){
-		    $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000) });
+		    $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true });
        document.getElementById('').scrollIntoView()
 	   },
 
@@ -125,7 +141,7 @@
 				  });
 			  }
 			  if (self.itemIteracao.showImg) {
-          setTimeout(function(){self.itemIteracao.showImg = false; self.atualizaScroll();}, 2000);
+          setTimeout(function(){self.itemIteracao.showImg = false; self.atualizaScroll();}, 4000);
         }
 		  });
 		  self.iteracoes.push(this.itemIteracao);
@@ -247,7 +263,7 @@
   }
 
   .img-robo{
-    align-self: center; margin-right: 5px;
+     margin-right: 5px;
     margin-left: -40px;
   }
 

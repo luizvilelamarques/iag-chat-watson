@@ -88,6 +88,7 @@
   font-size:40px;
   font-weight: bold;
   text-align:left;
+  margin-left: 30px;
 }
 
 .container {
