@@ -40,7 +40,7 @@
 				
 						<v-flex xs12 v-if="!iteracaoChat.showImg" style="padding:0 0;min-width:75%;" v-for="(opc, index) in iteracaoChat.opcoes" :key="`opcao${index}`">
 						  <span style="justify-content:left;">
-							  <v-btn class="opcao rounded-card text-xs-left" v-on:click="iteracao(opc.value, context)">{{opc.label}}</v-btn>
+							  <v-btn class="opcao rounded-card text-xs-left" v-on:click="iteracaoUsuario(opc.value)">{{opc.label}}</v-btn>
 						  </span>	 
 						</v-flex>
 					</v-layout>
@@ -80,25 +80,13 @@
 	    }
     }),
 	mounted () {
-      let primeiraIteracao = {
-        respostas: [],
-        perguntas: [],
-        opcoes: [],
-        iteracao: this.$route.params.assunto,
-        showImg: true
-      };
-      this.iteracoes.push(primeiraIteracao);
-      let self = this;
-      setTimeout(function(){
-        self.parametro = self.$route.params.assunto;
-        self.iteracao(self.parametro, self.context);
-        $('#chat .conversation-list').slimscroll({
+	  $('#chat .conversation-list').slimscroll({
           height: '65vh',
           start: 'bottom',
-        });
-        primeiraIteracao.showImg = false;
-        primeiraIteracao.iteracao = null;
-      }, 2000);
+		  wheelStep: 2,
+		  animate: true
+      });
+	  this.iteracaoUsuario(this.$route.params.assunto);
 	},
   watch: {
       "iteracoes": function(res) {
@@ -109,14 +97,32 @@
   methods: {
 	   atualizaScroll (){
 		    $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true });
-       document.getElementById('').scrollIntoView()
 	   },
-
 	   perguntaUsuario () {
-		  this.iteracao(this.parametro, this.context);
+		 this.iteracaoUsuario(this.parametro);
+	   },	   
+	   iteracaoUsuario (assunto) {
+			let primeiraIteracao = {
+				respostas: [],
+				perguntas: [],
+				opcoes: [],
+				iteracao: assunto,
+				showImg: true
+			};
+			this.iteracoes.push(primeiraIteracao);
+			let self = this;
+			setTimeout(async function(){
+				await self.iteracao(assunto, self.context);
+				primeiraIteracao.showImg = false;
+				primeiraIteracao.iteracao = null;
+			}, 2000);
 	   },
 
 	   async iteracao (text, context) {
+	    let agentCounterExiste = context!=null && (!!(context.agentCounter));
+		if (context!=null && !agentCounterExiste){
+			context.agentCounter = 0;
+		}
 	    this.parametro=null;
 	    this.itemIteracao = {
 			respostas: [],
