@@ -10,7 +10,8 @@
         </v-flex>
 
         <v-flex xs10>
-          <p class="ola-menu">Bem vindo ao chatbot do Sigquali.</br> Para começar, em qual módulo posso lhe ajudar?</p>
+          <p class="ola-menu">"Bem vindo ao chatbot do SigQuali.</p>
+		  <p class="ola-menu">Para começar, em qual módulo posso ajudá-lo?"</p>
         </v-flex>
 			  
 			  <v-flex v-for="itemMenu in items" :key="itemMenu.assunto" xs3>
@@ -35,14 +36,14 @@
   export default {
     data: () => ({
       items: [
-        { text: 'INDICADORES', assunto: 'Indicadores'},
-        { text: 'ANÁLISE CRÍTICA', assunto: 'Análise Crítica'},
-        { text: 'AÇÕES E PROJETOS', assunto: 'Ações e Projetos'},
-        { text: 'NÃO CONFORMIDADE', assunto: 'Não Conformidade'},
-        { text: 'DOCUMENTOS', assunto: 'Documentos'},
-		{ text: 'ESTRATÉGIA - BSC', assunto: 'Estratégia - BSC'},
-		{ text: 'MATRIZ DE RISCO', assunto: 'Matriz de Risco'},
-		{ text: 'MAPA DE PROCESSOS', assunto: 'Mapa de processos'}
+        { text: 'Indicadores', assunto: 'Indicadores'},
+        { text: 'Análises Críticas', assunto: 'Análise Crítica'},
+        { text: 'Ações e Projetos', assunto: 'Ações e Projetos'},
+        { text: 'Não Conformidade', assunto: 'Não Conformidade'},
+        { text: 'Documentos', assunto: 'Documentos'},
+		{ text: 'Estratégia e Painéis de Controle', assunto: 'Estratégia - BSC'},
+		{ text: 'Matriz de Risco', assunto: 'Matriz de Risco'},
+		{ text: 'Mapa de Processos', assunto: 'Mapa de processos'}
       ]
     }),
 	methods: {
