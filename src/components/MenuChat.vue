@@ -10,8 +10,7 @@
         </v-flex>
 
         <v-flex xs10>
-          <p class="ola-menu">"Bem vindo ao chatbot do SigQuali.</p>
-		  <p class="ola-menu">Para começar, em qual módulo posso ajudá-lo?"</p>
+          <p class="ola-menu" style="line-height:1.1">"Bem vindo ao chatbot do SigQuali.</br>Para começar, em qual módulo posso ajudá-lo?"</p>
         </v-flex>
 			  
 			  <v-flex v-for="itemMenu in items" :key="itemMenu.assunto" xs3>
@@ -76,7 +75,8 @@
   color: #1FB5AD !important;
   margin-left:0;
   border-radius: 1% 1% 1% 1%;
-  width:100%
+  width:100%;
+  padding:0px;
 }
 
 .itemMenu-apoio{
@@ -89,8 +89,13 @@
   font-size:40px;
   font-weight: bold;
   text-align:left;
-  margin-left: 30px;
+  margin-left: 30px;,
+  line-height: 1px;
 }
+
+.v-btn{
+    text-transform:none;
+  }
 
 .container {
 	margin: 0% 5% 0% 3%;
