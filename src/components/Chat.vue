@@ -5,8 +5,8 @@
 		</v-flex xs12>
 		<div id="chat">
 			<ul class="conversation-list" id="painelChat">	
-			<li v-for="(iteracaoChat, index) in iteracoes" :key="`iteracao${index}`" style="padding-bottom:5px;">
-				<v-container fluid grid-list-md text-xs-left>
+			<li v-for="(iteracaoChat, index) in iteracoes" :key="`iteracao${index}`">
+				<v-container fluid grid-list-md text-xs-left v-bind:class="{ removida: !iteracaoChat.iteracao}" style="padding-bottom:5px; padding-top:20px;">
 					<v-layout row wrap>
 
             <v-flex xs12 class="text-xs-right" v-if="iteracaoChat.iteracao">
@@ -280,6 +280,9 @@
   .img-load{
     margin: -10px -15px;
     width:50px;
+  }
+  .removida{
+	display:none;
   }
 
 </style>
