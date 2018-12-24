@@ -4,7 +4,7 @@
 		  <v-btn class="botao-voltar rounded-card" to="/"><p style="margin-top:5px;">VOLTAR PARA O MENU</p></v-btn>
 		</v-flex xs12>
 		<div id="chat">
-			<ul class="conversation-list" id="painelChat">	
+			<ul class="conversation-list" id="painelChat" ref="painelChat">	
 			<li v-for="(iteracaoChat, index) in iteracoes" :key="`iteracao${index}`">
 				<v-container fluid grid-list-md text-xs-left v-bind:class="{ removida: !iteracaoChat.iteracao}" style="padding-bottom:5px; padding-top:20px;">
 					<v-layout row wrap>
@@ -96,7 +96,9 @@
   },
   methods: {
 	   atualizaScroll (){
-		    $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true });
+		    //$('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true });
+			var element = this.$refs['painelChat'];
+			element.scrollTo({ top: 9999999, behavior: 'smooth' })
 	   },
 	   perguntaUsuario () {
 		 this.iteracaoUsuario(this.parametro);
