@@ -273,7 +273,7 @@
 
   .cabecalho-chat{
     border-bottom: 2px solid #1FB5AD; padding-bottom:10px;padding-top:0px;
-    background: #1FB5AD;
+    background: #167A7F;
     margin-top: -15px;
     padding-top: 15px;
   }
