@@ -21,7 +21,7 @@
 			  
 			  <v-flex xs12>
 			     <v-card color="white" class="rounded-card">
-				  <v-btn class="itemMenu itemMenu-apoio rounded-card" v-on:click="acessoChat('Apoio')">APOIO</v-btn>
+				  <v-btn class="itemMenu itemMenu-apoio rounded-card" v-on:click="acessoChat('Apoio')">Apoio</v-btn>
 				</v-card>
 			  </v-flex>
 			  

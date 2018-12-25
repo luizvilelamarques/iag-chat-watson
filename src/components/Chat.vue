@@ -6,7 +6,7 @@
 		<div id="chat">
 			<ul class="conversation-list" id="painelChat" ref="painelChat">	
 			<li v-for="(iteracaoChat, index) in iteracoes" :key="`iteracao${index}`">
-				<v-container fluid grid-list-md text-xs-left v-bind:class="{ removida: !iteracaoChat.iteracao}" style="padding-bottom:5px; padding-top:20px;">
+				<v-container fluid grid-list-md text-xs-left v-bind:class="{ removida: !iteracaoChat.iteracao}" style="padding-bottom:15px; padding-top:20px;">
 					<v-layout row wrap>
 
             <v-flex xs12 class="text-xs-right" v-if="iteracaoChat.iteracao">
@@ -98,10 +98,14 @@
 	   atualizaScroll (){
 		    //$('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true });
 			var element = this.$refs['painelChat'];
-			element.scrollTo({ top: 9999999, behavior: 'smooth' })
+			element.scrollTo({ top: 9999999, behavior: 'smooth' });
+			setTimeout(function(){ $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true }); }, 500);
+			
+			
 	   },
 	   perguntaUsuario () {
 		 this.iteracaoUsuario(this.parametro);
+		 this.parametro=null;
 	   },	   
 	   iteracaoUsuario (assunto) {
 			let primeiraIteracao = {
