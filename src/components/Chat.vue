@@ -96,12 +96,9 @@
   },
   methods: {
 	   atualizaScroll (){
-		    //$('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true });
 			var element = this.$refs['painelChat'];
 			element.scrollTo({ top: 9999999, behavior: 'smooth' });
-			setTimeout(function(){ $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true }); }, 500);
-			
-			
+			setTimeout(function(){ $('#chat .conversation-list').slimScroll({ scrollTo: ($('#chat .conversation-list li').length*1000), animate: true }); }, 500);			
 	   },
 	   perguntaUsuario () {
 		 this.iteracaoUsuario(this.parametro);
@@ -239,7 +236,7 @@
   }
 
   .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat).botao-voltar {
-    background-color:#1FB5AD;
+    background-color:#167A7F;
     margin-top:0;
     margin-bottom:0;
     border-radius: 1% 1% 1% 1%;
@@ -272,7 +269,7 @@
   }
 
   .cabecalho-chat{
-    border-bottom: 2px solid #1FB5AD; padding-bottom:10px;padding-top:0px;
+    border-bottom: 2px solid #167A7F; padding-bottom:10px;padding-top:0px;
     background: #167A7F;
     margin-top: -15px;
     padding-top: 15px;
