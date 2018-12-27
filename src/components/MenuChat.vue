@@ -24,13 +24,12 @@
 				  <v-btn class="itemMenu itemMenu-apoio rounded-card" v-on:click="acessoChat('Apoio')">Apoio</v-btn>
 				</v-card>
 			  </v-flex>
-			  
-			  <v-flex xs12>
-			      <img src="static/logo_sigquali.png" width="200" height="50" style="margin-bottom:5px;"/>
-			  </v-flex>
-			  
 			</v-layout>
 		  </v-container>
+		  
+		  
+		  <img src="static/logo_sigquali.png" width="140" height="30" style="margin-bottom:5px;margin-right: auto; margin-left: auto; display: block;"/>
+			
 		 
 	</div>
 </template>
