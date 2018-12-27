@@ -28,8 +28,8 @@
 		  </v-container>
 		  
 		  
-		  <img src="static/logo_sigquali.png" width="140" height="30" style="margin-bottom:5px;margin-right: auto; margin-left: auto; display: block;"/>
-			
+			<img src="static/logo_sigquali.png" width="155" height="40" style="margin-bottom:5px;margin-right: auto; margin-left: auto; display: block;"/>
+		  
 		 
 	</div>
 </template>
