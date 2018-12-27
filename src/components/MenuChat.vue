@@ -6,7 +6,7 @@
 			<v-layout row wrap>
 
         <v-flex xs2 style="width: 170px;">
-          <img src="static/bemvindo.jpg" width="160" height="160"/>
+          <img src="static/bemvindo.jpg" width="140" height="140"/>
         </v-flex>
 
         <v-flex xs10>
@@ -27,9 +27,9 @@
 			</v-layout>
 		  </v-container>
 		  
-		  
+		  <a href="https://usabilidade.sigquali.com.br">
 			<img src="static/logo_sigquali.png" width="155" height="40" style="margin-bottom:5px;margin-right: auto; margin-left: auto; display: block;"/>
-		  
+		  </a>
 		 
 	</div>
 </template>
@@ -89,7 +89,7 @@
 .ola-menu{
   font-family:Open Sans;
   font-color:#000;
-  font-size:40px;
+  font-size:37px;
   font-weight: bold;
   text-align:left;
   margin-left: 30px;,
