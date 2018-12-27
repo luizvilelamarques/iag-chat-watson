@@ -26,7 +26,7 @@
 			  </v-flex>
 			  
 			  <v-flex xs12>
-			      <img src="static/logo_sigquali.png" width="200" height="50" style="margin-top:10px;"/>
+			      <img src="static/logo_sigquali.png" width="200" height="50" style="margin-bottom:5px;"/>
 			  </v-flex>
 			  
 			</v-layout>
