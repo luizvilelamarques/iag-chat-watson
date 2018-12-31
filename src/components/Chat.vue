@@ -18,7 +18,7 @@
             <v-flex xs12 style="padding-bottom:3px;max-width:75%;" v-for="(item, index) in iteracaoChat.respostas" :key="`item${index}`">
               <v-layout row>
                   <img src="static/bemvindo.jpg" class="img-robo" width="40" height="40"/>
-                  <div class="rounded-card tamanho-card v-card white--text pergunta" >
+                  <div class="rounded-card tamanho-card v-card white--text pergunta respostachat" >
                     <nl2br tag="p" :text="item.resposta"/>
                   </div>
               </v-layout>
@@ -256,8 +256,12 @@
 
   .pergunta{
     border-bottom-left-radius: 0px !important;
-    padding: 5px 15px;
+    padding: 1px 15px;
     background-color:#1FB5AD;
+  }
+  
+  .respostachat{
+	margin-top: 5px;
   }
 
   .usuario{

@@ -1,7 +1,5 @@
 <template>
-  <div>
-
-
+  <div id="main">
 		  <v-container fluid grid-list-md text-xs-center>
 			<v-layout row wrap>
 
@@ -27,9 +25,11 @@
 			</v-layout>
 		  </v-container>
 		  
-		  <a href="https://usabilidade.sigquali.com.br">
-			<img src="static/logo_sigquali.png" width="155" height="40" style="margin-bottom:5px;margin-right: auto; margin-left: auto; display: block;"/>
-		  </a>
+		  <div class="div-img">
+			  <a href="https://usabilidade.sigquali.com.br" >
+				<img src="static/logo_sigquali.png" width="155" height="40"/>
+			  </a>
+		  </div>
 		 
 	</div>
 </template>
@@ -63,6 +63,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+
+	
+#main{
+ height:100%;
+}
+
+.div-img{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+}
 
 .v-card {
 	-webkit-box-shadow: none !important;
@@ -116,4 +129,8 @@
    background-image: linear-gradient(top, white, white 10%, transparent 10%, transparent 100%) !important;
    background-image: -webkit-linear-gradient(top, white, white 10%, transparent 10%, transparent 100%) !important; 
 }
+
+
+
+
 </style>

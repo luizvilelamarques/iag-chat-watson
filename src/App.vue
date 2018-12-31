@@ -48,6 +48,7 @@ html {
 	max-height: 90vh;
 	min-height: 90vh;
   overflow: hidden;
+  height:100%;
 
 }
 
@@ -100,5 +101,9 @@ div .btn__content {
 
 .opcao .v-btn__content{
   justify-content: left;
+}
+
+.v-content{
+   height: 100%;
 }
 </style>
