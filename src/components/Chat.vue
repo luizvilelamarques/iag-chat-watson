@@ -256,7 +256,7 @@
 
   .pergunta{
     border-bottom-left-radius: 0px !important;
-    padding: 1px 15px;
+    padding: 5px 15px;
     background-color:#1FB5AD;
   }
   
