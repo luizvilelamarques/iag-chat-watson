@@ -4,11 +4,11 @@
 			<v-layout row wrap>
 
         <v-flex xs2 style="width: 170px;">
-          <img src="static/bemvindo.jpg" width="140" height="140"/>
+          <img src="static/avatar.png" width="140" height="140"/>
         </v-flex>
 
         <v-flex xs10>
-          <p class="ola-menu" style="line-height:1.1">"Bem-vindo ao chatbot do SigQuali.</br>Para começar, em qual módulo posso ajudá-lo?"</p>
+          <p class="ola-menu" style="line-height:1.1">"Bem-vindo ao chatbot do SigQuali. Eu sou a Sigrid. Para começar, em que módulo posso ajudá-lo?"</p>
         </v-flex>
 			  
 			  <v-flex v-for="itemMenu in items" :key="itemMenu.assunto" xs3>

@@ -17,7 +17,7 @@
 
             <v-flex xs12 style="padding-bottom:3px;max-width:75%;" v-for="(item, index) in iteracaoChat.respostas" :key="`item${index}`">
               <v-layout row>
-                  <img src="static/bemvindo.jpg" class="img-robo" width="40" height="40"/>
+                  <img src="static/avatar.png" class="img-robo" width="40" height="40"/>
                   <div class="rounded-card tamanho-card v-card white--text pergunta respostachat" >
                     <nl2br tag="p" :text="item.resposta"/>
                   </div>
@@ -31,7 +31,7 @@
 
             <v-flex xs12 v-if="!iteracaoChat.showImg" style="padding-bottom:8px;padding-top:8px; max-width:75%;" v-for="(pergunta, index) in iteracaoChat.perguntas" :key="`pergunta${index}`">
               <v-layout row>
-              <img src="static/bemvindo.jpg" class="img-robo" width="40" height="40"/>
+              <img src="static/avatar.png" class="img-robo" width="40" height="40"/>
               <div class="rounded-card tamanho-card v-card white--text pergunta">
 							  <nl2br tag="p" :text="pergunta"/>
 						   </div>
